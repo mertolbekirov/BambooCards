@@ -1,0 +1,31 @@
+﻿@model List<AccountServiceModel>
+
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Account Id</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Currency</th>
+            <th scope="col">Is Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model)
+        {
+            <tr>
+                <td scope="col">@account.Id</td>
+                <td scope="col">@account.Balance</td>
+                <td scope="col">@account.Currency</td>
+                @if (@account.IsActive == true)
+                {
+                    <td scope="col">Yes</td>
+                }
+                else
+                {
+                    <td scope="col">No</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

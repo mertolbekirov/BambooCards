@@ -1,0 +1,45 @@
+﻿@model CardFormModel
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center"></h2>
+        <div class="text-center">
+            <img src="@Model.LogoUrl" class="rounded img-thumbnail" alt="Image of the item">
+        </div>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" readonly>
+                <span asp-validation-for="Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                @if (@Model.MinFaceValue == @Model.MaxFaceValue)
+                {
+                    <label asp-for="MinFaceValue">FaceValue</label>
+                    <input asp-for="MinFaceValue" class="form-control" readonly>
+                    <span asp-validation-for="MinFaceValue" class="small text-danger"></span>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="Price">Price in @Model.CurrencyCode</label>
+                <input asp-for="Price" class="form-control" readonly>
+                <span asp-validation-for="Price" class="small text-danger"></span>
+            </div>
+            @if (@Model.QuantityAvailable != null)
+            {
+                
+                <div class="form-group">
+                    <label asp-for="QuantityAvailable">Available quantity: @Model.QuantityAvailable</label>
+                    <input asp-for="QuantityAvailable" class="form-control" readonly>
+                    <span asp-validation-for="QuantityAvailable" class="small text-danger"></span>
+                </div>
+            }
+            <div class="form-group">
+                <label asp-for="QuantityToBuy">Desired quantity</label>
+                <input asp-for="QuantityToBuy" min="0" class="form-control" place>
+                <span asp-validation-for="QuantityToBuy" class="small text-danger"></span>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Sell" />
+        </form>
+    </div>
+</div>

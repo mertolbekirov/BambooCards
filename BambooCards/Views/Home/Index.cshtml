@@ -1,0 +1,32 @@
+﻿@model IEnumerable<BrandServiceModel>
+
+<div class="row">
+    @foreach (var brand in Model)
+    {
+        @foreach (var product in brand.Products)
+        {
+            <div class="col-md-4">
+                <div class="card mb-3" style="width: 18rem;">
+                    @if (brand.LogoUrl != String.Empty)
+                    {
+                        <img class="card-img-top" src="@brand.LogoUrl" alt="@product.Name">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">@Html.Raw(brand.Description)</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        @if (product.MinFaceValue == product.MaxFaceValue)
+                        {
+                            <li class="list-group-item">Face Value - @product.MinFaceValue.ToString("f2") @product.Price.CurrencyCode</li>
+                            <li class="list-group-item">Price - @product.Price.Min.ToString("f2") @product.Price.CurrencyCode</li>
+                        }
+                    </ul>
+                    <div class="card-body">
+                        <a asp-action="CardBuyDetails" asp-route-id="@product.Id" class="btn btn-info">Buy Card</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
