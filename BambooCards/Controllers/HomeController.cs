@@ -49,14 +49,23 @@ namespace BambooCards.DControllers
         }
 
         [HttpPost]
-        public IActionResult CardBuyDetails(int id, CardFormModel card)
+        public async Task<IActionResult> CardBuyDetails(int id, CardFormModel card)
         {
             if (!ModelState.IsValid)
             {
                 return View(card);
             }
 
-            return null;
+            var isSuccessful = await this.cards.BuyCard(id, card.QuantityToBuy);
+
+            if (isSuccessful)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         public IActionResult Privacy()

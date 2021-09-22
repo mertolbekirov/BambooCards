@@ -23,8 +23,8 @@ namespace BambooCards.Services.Cards.Models
 
     public class PriceJsonModel
     {
-        public decimal Min { get; init; }
-        public decimal Max { get; init; }
+        public decimal Min { get; set; }
+        public decimal Max { get; set; }
 
         public string CurrencyCode { get; init; }
     }

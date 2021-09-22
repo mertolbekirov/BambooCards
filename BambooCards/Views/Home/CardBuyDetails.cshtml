@@ -39,6 +39,9 @@
                 <input asp-for="QuantityToBuy" min="0" class="form-control" place>
                 <span asp-validation-for="QuantityToBuy" class="small text-danger"></span>
             </div>
+            <input asp-for="CurrencyCode" class="d-none"/>
+            <input asp-for="QuantityAvailable" class="d-none"/>
+
             <input class="btn btn-primary" type="submit" value="Sell" />
         </form>
     </div>

@@ -19,7 +19,7 @@ namespace BambooCards.Models.Cards
 
         public int? QuantityAvailable { get; set; }
 
-        [Range(0, int.MaxValue)]
+        [Range(1, int.MaxValue)]
         public int QuantityToBuy { get; set; }
     }
 }

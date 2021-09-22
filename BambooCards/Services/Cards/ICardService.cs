@@ -9,5 +9,7 @@ namespace BambooCards.Services.Cards
         public Task<List<BrandServiceModel>> GetCatalog();
 
         public Task<CardDetailsServiceModel> GetProductDetails(int id);
+        Task<bool> BuyCard(int id, int quantity);
+
     }
 }
